@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | The Future of Mental Wellness</title>
+    <meta name="description" content="Next-generation therapy platform integrating AI, VR, and human connection.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "Aura Therapy",
+      "url": "https://www.auratherapy.future",
+      "logo": "https://www.auratherapy.future/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/auratherapy",
+        "https://www.twitter.com/auratherapy"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-800-555-0199",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        stone: {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            800: '#292524',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-dark {
+            background: rgba(6, 95, 70, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Smooth Scroll & Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #065f46 0%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Floating background particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 10s infinite;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans overflow-x-hidden relative">
+
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="particle bg-emerald-800 w-96 h-96 top-0 left-0 blur-3xl opacity-5"></div>
+        <div class="particle bg-gold-500 w-64 h-64 bottom-20 right-0 blur-3xl opacity-10" style="animation-delay: 2s;"></div>
+    </div>
+
+    <nav class="fixed w-full z-50 transition-all duration-300 top-0" id="navbar">
+        <div class="glass shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="sparkles" class="text-gold-600 w-6 h-6"></i>
+                        <span class="font-serif text-2xl font-semibold text-emerald-900 tracking-tight">Aura</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#services" class="text-stone-600 hover:text-emerald-800 transition-colors text-sm font-medium">Services</a>
+                        <a href="#future" class="text-stone-600 hover:text-emerald-800 transition-colors text-sm font-medium">The Future</a>
+                        <a href="#specialists" class="text-stone-600 hover:text-emerald-800 transition-colors text-sm font-medium">Specialists</a>
+                        <button class="bg-emerald-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-800 transition-all transform hover:scale-105 shadow-lg shadow-emerald-900/20 flex items-center gap-2">
+                            <span>Client Portal</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="text-stone-800 focus:outline-none">
+                            <i data-lucide="menu" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full glass border-t border-stone-200 shadow-xl md:hidden flex-col p-4 space-y-4">
+            <a href="#services" class="block text-stone-800 font-medium">Services</a>
+            <a href="#future" class="block text-stone-800 font-medium">The Future</a>
+            <a href="#specialists" class="block text-stone-800 font-medium">Specialists</a>
+            <button class="w-full bg-emerald-900 text-white py-3 rounded-lg font-medium">Login</button>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-8 reveal">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                Accepting New Clients • 2025
+            </div>
+            
+            <h1 class="font-serif text-5xl md:text-7xl font-medium text-stone-900 leading-tight mb-8 reveal" style="transition-delay: 100ms;">
+                Mental wellness, <br/>
+                <span class="text-gradient italic">reimagined.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto mb-10 leading-relaxed reveal" style="transition-delay: 200ms;">
+                Experience the convergence of compassion and technology. From AI-assisted journaling to VR exposure therapy, we provide a modern sanctuary for your mind.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 reveal" style="transition-delay: 300ms;">
+                <button onclick="openChat()" class="px-8 py-4 bg-emerald-900 text-white rounded-full font-medium hover:bg-emerald-800 transition-all hover:scale-105 shadow-xl shadow-emerald-900/20 flex items-center justify-center gap-2">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Start Assessment
+                </button>
+                <button class="px-8 py-4 bg-white text-stone-800 border border-stone-200 rounded-full font-medium hover:bg-stone-50 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                    Watch Demo
+                </button>
+            </div>
+        </div>
+
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-emerald-100 to-gold-100 rounded-full blur-3xl -z-10 opacity-40 animate-pulse-slow"></div>
+    </section>
+
+    <section id="future" class="py-20 bg-white/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-4">The Future of Therapy</h2>
+                <p class="text-stone-500">Integrating cutting-edge technology with evidence-based clinical care.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 bg-stone-50 rounded-3xl p-8 border border-stone-100 relative overflow-hidden group hover:shadow-xl transition-all duration-500 reveal">
+                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="brain-circuit" class="w-32 h-32 text-emerald-900"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6">
+                            <i data-lucide="glasses" class="text-emerald-800 w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl text-stone-900 mb-3">VR Immersion Therapy</h3>
+                        <p class="text-stone-600 mb-6 max-w-md">Safely confront anxieties in controlled, hyper-realistic virtual environments designed by clinical experts. Perfect for phobias and PTSD.</p>
+                        <a href="#" class="text-gold-600 font-medium hover:text-gold-700 flex items-center gap-1 group-hover:gap-2 transition-all">
+                            Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-900 rounded-3xl p-8 text-white relative overflow-hidden group hover:shadow-xl transition-all duration-500 reveal" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/30"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-6">
+                                <i data-lucide="activity" class="text-gold-400 w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl text-white mb-3">Bio-Feedback</h3>
+                            <p class="text-emerald-100 text-sm">Real-time physiological data syncing with Apple Watch & Fitbit to track stress markers.</p>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-white/10">
+                            <span class="text-gold-400 text-sm font-medium">Live Integration Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-stone-100 hover:shadow-xl transition-all duration-500 reveal" style="transition-delay: 200ms;">
+                    <i data-lucide="message-square-heart" class="text-emerald-800 w-8 h-8 mb-4"></i>
+                    <h3 class="font-serif text-xl text-stone-900 mb-2">24/7 AI Companion</h3>
+                    <p class="text-stone-500 text-sm">Immediate support for acute moments, bridged seamlessly to your human therapist.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-gold-50 to-white rounded-3xl p-8 border border-stone-100 hover:shadow-xl transition-all duration-500 reveal" style="transition-delay: 300ms;">
+                    <i data-lucide="shield-check" class="text-gold-600 w-8 h-8 mb-4"></i>
+                    <h3 class="font-serif text-xl text-stone-900 mb-2">Quantum Encryption</h3>
+                    <p class="text-stone-500 text-sm">Your deepest thoughts are protected by military-grade, next-gen cryptography.</p>
+                </div>
+
+                <div class="md:col-span-2 bg-white rounded-3xl p-8 border border-stone-100 hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row items-center gap-8 reveal" style="transition-delay: 400ms;">
+                    <div class="flex-1">
+                        <h3 class="font-serif text-2xl text-stone-900 mb-3">Holistic Ecosystem</h3>
+                        <p class="text-stone-600">We don't just treat symptoms; we design a lifestyle. Nutrition planning, sleep hygiene optimization, and social health mapping included in every plan.</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-emerald-800">98%</span>
+                            <span class="text-xs text-stone-500 uppercase tracking-wide">Satisfaction</span>
+                        </div>
+                        <div class="w-px h-12 bg-stone-200"></div>
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-emerald-800">15k+</span>
+                            <span class="text-xs text-stone-500 uppercase tracking-wide">Sessions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-emerald-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fbbf24 1px, transparent 1px); background-size: 32px 32px;"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+            <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">Immediate Access, No Waitlists.</h2>
+            <p class="text-emerald-100 text-lg mb-10">Our "Direct Connect" technology matches you with an available specialist in under 60 seconds.</p>
+            
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 inline-block w-full max-w-md mx-auto">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="relative">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Therapist" class="w-12 h-12 rounded-full bg-white">
+                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-emerald-900 rounded-full"></span>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-white font-medium">Dr. Sarah & AI Assistant</div>
+                        <div class="text-emerald-200 text-xs">Online • Replies instantly</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-lg p-3 text-left mb-4">
+                    <p class="text-emerald-50 text-sm">Hello! I can help you book a session or answer questions about VR therapy. How are you feeling today?</p>
+                </div>
+                <button onclick="openChat()" class="w-full bg-gold-500 hover:bg-gold-600 text-white font-medium py-3 rounded-lg transition-colors">
+                    Start Chatting Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-serif text-3xl text-center text-stone-900 mb-16 reveal">Stories of Transformation</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow reveal">
+                    <div class="flex text-gold-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-stone-600 mb-6 italic">"The VR exposure therapy was a game changer for my social anxiety. It felt futuristic but incredibly safe."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center font-serif text-stone-600">EL</div>
+                        <div>
+                            <div class="font-medium text-stone-900">Elena R.</div>
+                            <div class="text-xs text-stone-500">Anxiety Program</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow reveal" style="transition-delay: 100ms;">
+                    <div class="flex text-gold-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-stone-600 mb-6 italic">"I love the app integration. Tracking my mood biometrics helped my therapist understand me better than I understood myself."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center font-serif text-stone-600">MJ</div>
+                        <div>
+                            <div class="font-medium text-stone-900">Marcus J.</div>
+                            <div class="text-xs text-stone-500">Depression Management</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow reveal" style="transition-delay: 200ms;">
+                    <div class="flex text-gold-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-stone-600 mb-6 italic">"Finally, a therapy website that doesn't feel clinical and cold. The aesthetics alone make me feel calmer."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center font-serif text-stone-600">SK</div>
+                        <div>
+                            <div class="font-medium text-stone-900">Sarah K.</div>
+                            <div class="text-xs text-stone-500">Wellness Coaching</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center space-x-2 mb-6">
+                    <i data-lucide="sparkles" class="text-gold-500 w-6 h-6"></i>
+                    <span class="font-serif text-2xl font-semibold text-white tracking-tight">Aura</span>
+                </div>
+                <p class="mb-6 max-w-sm">Pioneering the intersection of mental healthcare and modern technology. Your journey to a better self starts here.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-emerald-400 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-emerald-400 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-emerald-400 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-serif mb-6">Services</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">Individual Therapy</a></li>
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">Couples Counseling</a></li>
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">VR Exposure</a></li>
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">Neuro-Feedback</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-serif mb-6">Legal</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">HIPAA Compliance</a></li>
+                    <li><a href="#" class="hover:text-emerald-400 transition-colors">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-stone-800 text-center text-xs">
+            &copy; 2025 Aura Therapy. All rights reserved.
+        </div>
+    </footer>
+
+    <div id="chat-widget" class="fixed bottom-6 right-6 z-50 transition-all duration-300 transform translate-y-0">
+        <button id="chat-toggle" onclick="toggleChat()" class="bg-emerald-800 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 group">
+            <i data-lucide="message-circle" class="w-6 h-6 group-hover:rotate-12 transition-transform"></i>
+            <span class="absolute right-0 top-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
+        </button>
+
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-stone-100 overflow-hidden transform transition-all origin-bottom-right scale-95 opacity-0">
+            <div class="bg-emerald-900 p-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-10 h-10 rounded-full bg-white border-2 border-emerald-700">
+                        <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 rounded-full border border-emerald-900"></div>
+                    </div>
+                    <div>
+                        <h5 class="text-white font-medium text-sm">Intake Specialist</h5>
+                        <p class="text-emerald-200 text-xs">Online Now</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-emerald-300 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            
+            <div class="p-4 h-64 overflow-y-auto bg-stone-50 space-y-4" id="chat-messages">
+                <div class="flex gap-2">
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-stone-700 max-w-[85%]">
+                        Hi there! I'm here to help you match with the perfect therapist or answer questions about our VR technology.
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-stone-700 max-w-[85%]">
+                        Are you looking for support for yourself, a couple, or a child?
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-white border-t border-stone-100">
+                <div class="flex gap-2">
+                    <input type="text" placeholder="Type your message..." class="flex-1 bg-stone-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <button class="bg-emerald-800 text-white p-2 rounded-full hover:bg-emerald-700"><i data-lucide="send" class="w-4 h-4"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        });
+
+        // Chat Widget Toggle Logic
+        const chatWindow = document.getElementById('chat-window');
+        let isChatOpen = false;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatWindow.classList.remove('hidden');
+                // Small delay to allow display block to apply before transition
+                setTimeout(() => {
+                    chatWindow.classList.remove('scale-95', 'opacity-0');
+                    chatWindow.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                chatWindow.classList.remove('scale-100', 'opacity-100');
+                chatWindow.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    chatWindow.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Open Chat from other buttons
+        function openChat() {
+            if (!isChatOpen) {
+                toggleChat();
+            }
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-0');
+            } else {
+                nav.classList.add('py-2');
+            }
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
