@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kshema Physiotherapy & Chiropractic Centre | Dr. Vasudev Vader</title>
-    <meta name="description" content="Advanced Physiotherapy, Chiropractic Care & Slimming Solutions in Hubballi by Dr. Vasudev Vader.">
+    <title>Kshema Physiotherapy & Chiropractic | Dr. Vasudev Vader</title>
+    <meta name="description" content="Premium Physiotherapy and Chiropractic care in Hubballi.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -23,27 +23,16 @@
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        medical: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            500: '#10b981', // Emerald
-                            600: '#059669',
-                            900: '#064e3b',
-                        },
-                        stone: {
-                            50: '#fafaf9',
-                            800: '#292524',
-                            900: '#1c1917',
-                        },
-                        gold: {
-                            400: '#fbbf24',
-                            500: '#f59e0b',
-                            600: '#d97706',
+                        brand: {
+                            dark: '#0f172a',    /* Slate 900 */
+                            primary: '#059669', /* Emerald 600 */
+                            light: '#d1fae5',   /* Emerald 100 */
+                            accent: '#d97706',  /* Amber 600 */
                         }
                     },
-                    backgroundImage: {
-                        'hero-pattern': "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(5, 150, 105, 0.15)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
                     }
                 }
             }
@@ -51,153 +40,145 @@
     </script>
 
     <style>
-        /* Custom Animations */
-        .glass-nav {
+        /* Modern CSS Reset & Utilities */
+        body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        
+        /* Glassmorphism Effect */
+        .glass {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .reveal {
+        /* Scroll Animations */
+        .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .reveal.active {
+        .fade-in-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Floating Chat Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        /* Smooth Mobile Menu Transition */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
         }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800">
 
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-medical-500 rounded-lg flex items-center justify-center text-white">
-                        <i data-lucide="activity" class="w-5 h-5"></i>
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
                     </div>
-                    <a href="#" class="font-serif text-2xl font-bold tracking-tight text-stone-900">
-                        Kshema<span class="text-medical-600">.</span>
-                    </a>
-                </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-xl font-bold leading-none text-slate-900">KSHEMA</span>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-medium">Physio & Chiro</span>
+                    </div>
+                </a>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-sm font-medium hover:text-medical-600 transition-colors">Home</a>
-                    <a href="#about" class="text-sm font-medium hover:text-medical-600 transition-colors">Dr. Vader</a>
-                    <a href="#services" class="text-sm font-medium hover:text-medical-600 transition-colors">Services</a>
-                    <a href="#tele-rehab" class="text-sm font-medium hover:text-medical-600 transition-colors">Tele-Rehab</a>
-                    <a href="#contact" class="px-5 py-2.5 bg-stone-900 text-white text-sm font-medium rounded-full hover:bg-medical-600 transition-all shadow-lg hover:shadow-medical-500/30">
+                    <a href="#home" class="text-sm font-medium hover:text-brand-primary transition-colors">Home</a>
+                    <a href="#services" class="text-sm font-medium hover:text-brand-primary transition-colors">Treatments</a>
+                    <a href="#about" class="text-sm font-medium hover:text-brand-primary transition-colors">Dr. Vader</a>
+                    <a href="#location" class="text-sm font-medium hover:text-brand-primary transition-colors">Location</a>
+                    <a href="#book" class="px-6 py-2.5 bg-brand-dark text-white text-sm font-medium rounded-full hover:bg-brand-primary transition-all shadow-lg hover:shadow-brand-primary/30 transform hover:-translate-y-0.5">
                         Book Appointment
                     </a>
                 </div>
 
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="p-2 rounded-md hover:bg-stone-100">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
+                <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md absolute w-full border-b border-gray-100">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#home" class="block px-3 py-2 text-base font-medium hover:bg-stone-50 rounded-md">Home</a>
-                <a href="#about" class="block px-3 py-2 text-base font-medium hover:bg-stone-50 rounded-md">About</a>
-                <a href="#services" class="block px-3 py-2 text-base font-medium hover:bg-stone-50 rounded-md">Services</a>
-                <a href="#contact" class="block px-3 py-2 text-base font-medium text-medical-600 hover:bg-stone-50 rounded-md">Book Now</a>
+
+        <div id="mobile-menu" class="bg-white/95 backdrop-blur-xl border-b border-slate-100 md:hidden">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block px-4 py-3 rounded-lg hover:bg-brand-light text-brand-dark font-medium mobile-link">Home</a>
+                <a href="#services" class="block px-4 py-3 rounded-lg hover:bg-brand-light text-brand-dark font-medium mobile-link">Treatments</a>
+                <a href="#about" class="block px-4 py-3 rounded-lg hover:bg-brand-light text-brand-dark font-medium mobile-link">Dr. Vader</a>
+                <a href="#location" class="block px-4 py-3 rounded-lg hover:bg-brand-light text-brand-dark font-medium mobile-link">Contact</a>
+                <a href="#book" class="block px-4 py-3 rounded-lg bg-brand-dark text-white text-center font-medium mt-4 mobile-link">Book Appointment</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-stone-100 to-transparent"></div>
-            <div class="absolute -top-20 -right-20 w-96 h-96 bg-medical-100 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
-            <div class="absolute bottom-0 left-0 w-96 h-96 bg-gold-100 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
-        </div>
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-green-50 to-transparent -z-10 rounded-bl-[100px]"></div>
+        <div class="absolute top-40 -left-20 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 reveal active">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-medical-50 border border-medical-100 text-medical-700 text-xs font-semibold uppercase tracking-wider">
-                        <span class="relative flex h-2 w-2">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-medical-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-2 w-2 bg-medical-500"></span>
-                        </span>
-                        Accepting New Patients in Hubballi
+                <div class="fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 border border-green-100 text-brand-primary text-xs font-bold uppercase tracking-wider mb-6">
+                        <span class="w-2 h-2 rounded-full bg-brand-primary animate-pulse"></span>
+                        Hubballi's Leading Clinic
                     </div>
-                    
-                    <h1 class="font-serif text-5xl md:text-7xl font-bold text-stone-900 leading-[1.1]">
-                        Restoring Motion,<br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-medical-600 to-medical-400">Reclaiming Life.</span>
+                    <h1 class="font-serif text-5xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6">
+                        Advanced Pain <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-emerald-400">Relief & Recovery.</span>
                     </h1>
-                    
-                    <p class="text-lg text-stone-600 max-w-lg leading-relaxed">
-                        Experience the future of rehabilitation with Dr. Vasudev Vader. Combining advanced chiropractic techniques, evidence-based physiotherapy, and modern technology for rapid recovery.
+                    <p class="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
+                        Experience the synergy of modern Chiropractic adjustments and evidence-based Physiotherapy with Dr. Vasudev Vader.
                     </p>
-
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" class="group flex items-center justify-center gap-2 px-8 py-4 bg-stone-900 text-white rounded-full hover:bg-medical-600 transition-all duration-300 shadow-xl hover:shadow-medical-500/25">
-                            <span>Start Recovery</span>
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        <a href="#book" class="flex items-center justify-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-full font-medium hover:bg-emerald-700 transition-all shadow-glow hover:scale-105">
+                            Start Recovery
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
-                        <button class="flex items-center justify-center gap-2 px-8 py-4 bg-white border border-stone-200 text-stone-900 rounded-full hover:bg-stone-50 transition-all">
-                            <i data-lucide="play-circle" class="w-5 h-5 text-medical-600"></i>
-                            <span>Virtual Tour</span>
-                        </button>
+                        <a href="tel:+919800000000" class="flex items-center justify-center gap-2 px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-full font-medium hover:bg-slate-50 transition-all">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            Call Clinic
+                        </a>
                     </div>
                     
-                    <div class="flex items-center gap-4 pt-4">
-                        <div class="flex -space-x-3">
-                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Patient">
-                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Patient">
-                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Patient">
+                    <div class="mt-12 grid grid-cols-3 gap-6 border-t border-slate-200 pt-8">
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900">10+</p>
+                            <p class="text-sm text-slate-500">Years Exp.</p>
                         </div>
-                        <div class="text-sm">
-                            <div class="flex text-gold-500">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            </div>
-                            <p class="text-stone-500"><span class="font-bold text-stone-900">4.9/5</span> from 200+ Reviews</p>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900">5k+</p>
+                            <p class="text-sm text-slate-500">Patients</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900">4.9</p>
+                            <p class="text-sm text-slate-500">Rating</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative lg:h-[600px] flex items-center justify-center reveal delay-200">
-                    <div class="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
-                         <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Dr Vasudev Vader Physiotherapy" class="w-full h-full object-cover">
-                        
-                        <div class="absolute bottom-8 left-8 glass-card p-4 rounded-xl flex items-center gap-4 animate-float">
-                            <div class="bg-green-100 p-3 rounded-full text-green-600">
-                                <i data-lucide="shield-check" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-stone-500 uppercase font-semibold">Recovery Rate</p>
-                                <p class="text-xl font-bold font-serif">98% Success</p>
-                            </div>
+                <div class="relative fade-in-up delay-100 hidden lg:block">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Dr Vasudev Vader Treatment" class="w-full h-auto object-cover transform hover:scale-105 transition-duration-700">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-glass flex items-center gap-3 z-20 animate-bounce" style="animation-duration: 3s;">
+                        <div class="bg-green-100 p-2 rounded-full text-brand-primary">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 uppercase font-bold">Success Rate</p>
+                            <p class="text-lg font-bold text-slate-900">98% Recovery</p>
                         </div>
                     </div>
                 </div>
@@ -205,123 +186,65 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-white relative overflow-hidden">
+    <section id="services" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative reveal">
-                    <div class="absolute -inset-4 bg-stone-100 rounded-full blur-2xl opacity-50"></div>
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1000&q=80" alt="Doctor Consultation" class="relative rounded-2xl shadow-lg grayscale hover:grayscale-0 transition-all duration-500">
-                </div>
-                <div class="reveal">
-                    <h2 class="font-serif text-4xl font-bold text-stone-900 mb-6">Meet Dr. Vasudev Vader</h2>
-                    <h3 class="text-xl text-medical-600 font-medium mb-4">MPT, Senior Physiotherapist & Chiropractor</h3>
-                    <p class="text-stone-600 mb-6 leading-relaxed">
-                        With years of dedicated practice in Hubballi, Dr. Vader leads Kshema Physiotherapy with a vision to integrate traditional chiropractic adjustments with modern rehabilitation science. 
-                    </p>
-                    <p class="text-stone-600 mb-8 leading-relaxed">
-                        Our clinic at Keshwapur is equipped with state-of-the-art technology for pain management, post-surgical recovery, and sports injury rehabilitation. We don't just treat symptoms; we rebuild your body's foundation.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="border-l-4 border-medical-500 pl-4">
-                            <p class="text-3xl font-serif font-bold text-stone-900">10+</p>
-                            <p class="text-sm text-stone-500">Years Experience</p>
-                        </div>
-                        <div class="border-l-4 border-gold-500 pl-4">
-                            <p class="text-3xl font-serif font-bold text-stone-900">5k+</p>
-                            <p class="text-sm text-stone-500">Happy Patients</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-24 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="font-serif text-4xl font-bold text-stone-900 mb-4">Holistic Care Services</h2>
-                <p class="text-stone-600">Comprehensive treatments tailored to your unique physiology.</p>
+            <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-4">Holistic Treatments</h2>
+                <p class="text-slate-500">We combine technology with manual therapy to treat the root cause, not just the symptoms.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 reveal">
-                    <div class="w-14 h-14 bg-medical-50 rounded-xl flex items-center justify-center text-medical-600 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="activity" class="w-7 h-7"></i>
+                <div class="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 fade-in-up">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-stone-900 mb-3">Chiropractic Care</h3>
-                    <p class="text-stone-500 text-sm leading-relaxed mb-4">
-                        Spinal adjustments and manipulation to correct alignment, relieve pain, and improve function.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-medical-600 text-sm font-semibold hover:gap-2 transition-all">Learn more <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                    <h3 class="font-serif text-xl font-bold mb-3 text-slate-900">Chiropractic Care</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed">Spinal adjustments to correct alignment, relieve back pain, and improve nervous system function.</p>
+                    <a href="#book" class="text-blue-600 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Book Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
                 </div>
 
-                <div class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-100">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="accessibility" class="w-7 h-7"></i>
+                <div class="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 fade-in-up delay-75">
+                    <div class="w-12 h-12 bg-brand-light text-brand-primary rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="accessibility" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-stone-900 mb-3">Neuro-Physiotherapy</h3>
-                    <p class="text-stone-500 text-sm leading-relaxed mb-4">
-                        Specialized rehabilitation for stroke, paralysis, and nerve injuries to restore motor functions.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-blue-600 text-sm font-semibold hover:gap-2 transition-all">Learn more <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                    <h3 class="font-serif text-xl font-bold mb-3 text-slate-900">Advanced Physiotherapy</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed">Neuro-rehab, post-surgical recovery, and sports injury management using modern modalities.</p>
+                    <a href="#book" class="text-brand-primary text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Book Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
                 </div>
 
-                <div class="group bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-200">
-                    <div class="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="dumbbell" class="w-7 h-7"></i>
+                <div class="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-transparent transition-all duration-300 fade-in-up delay-150">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-stone-900 mb-3">Sports Rehab & Slimming</h3>
-                    <p class="text-stone-500 text-sm leading-relaxed mb-4">
-                        Advanced recovery protocols for athletes and scientific weight management programs.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-orange-600 text-sm font-semibold hover:gap-2 transition-all">Learn more <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+                    <h3 class="font-serif text-xl font-bold mb-3 text-slate-900">Slimming & Wellness</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed">Scientific weight management and ergonomic lifestyle consulting for long-term health.</p>
+                    <a href="#book" class="text-amber-600 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">Book Now <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="tele-rehab" class="py-24 bg-stone-900 text-white overflow-hidden relative">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+    <section id="about" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-                <div class="md:w-1/2 reveal">
-                    <span class="text-medical-400 font-bold tracking-widest uppercase text-sm mb-2 block">Next Gen Therapy</span>
-                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">Virtual Consultations</h2>
-                    <p class="text-stone-400 text-lg mb-8">
-                        Can't make it to the clinic? Use our secure Tele-Rehab platform. Get expert advice, posture analysis via AI, and guided home exercises from Dr. Vader wherever you are.
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/3 fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dr Vasudev Vader" class="rounded-2xl shadow-2xl border border-slate-700 grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+                <div class="w-full md:w-2/3 fade-in-up delay-75">
+                    <h2 class="font-serif text-4xl font-bold mb-2">Dr. Vasudev Vader</h2>
+                    <p class="text-brand-primary font-medium text-lg mb-6">MPT, Senior Physiotherapist & Chiropractor</p>
+                    <p class="text-slate-400 leading-relaxed mb-6 text-lg">
+                        "I believe in a future where pain doesn't dictate your life. At Kshema, we don't just treat the site of pain; we analyze the entire kinetic chain to prevent recurrence. Using a blend of traditional chiropractic wisdom and modern physiotherapy science, we help you move better and live longer."
                     </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3">
-                            <div class="bg-medical-500/20 p-2 rounded-full"><i data-lucide="video" class="w-5 h-5 text-medical-400"></i></div>
-                            <span>HD Video Consultations</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="bg-medical-500/20 p-2 rounded-full"><i data-lucide="smartphone" class="w-5 h-5 text-medical-400"></i></div>
-                            <span>AI-Assisted Posture Check</span>
-                        </li>
-                    </ul>
-                    <button class="px-8 py-3 bg-medical-600 rounded-full font-medium hover:bg-medical-500 transition-colors">
-                        Book Online Session
-                    </button>
-                </div>
-                <div class="md:w-1/2 reveal delay-200">
-                    <div class="relative glass-card bg-white/10 p-6 rounded-2xl border border-white/10">
-                        <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-                                <span class="font-mono text-sm">Live Consultation</span>
-                            </div>
-                            <i data-lucide="maximize-2" class="w-5 h-5 text-stone-400"></i>
+                    <div class="flex gap-4">
+                        <div class="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
+                            <span class="block text-xl font-bold">MPT</span>
+                            <span class="text-xs text-slate-500">Masters</span>
                         </div>
-                        <div class="bg-stone-800 rounded-lg h-64 flex items-center justify-center relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1576091160550-2187d80a18f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-80" alt="Doctor Video">
-                            <div class="absolute bottom-4 left-4 bg-black/60 px-3 py-1 rounded text-xs">Dr. Vasudev</div>
-                        </div>
-                        <div class="flex justify-center gap-4 mt-6">
-                            <button class="p-3 bg-stone-700 rounded-full hover:bg-stone-600"><i data-lucide="mic" class="w-5 h-5"></i></button>
-                            <button class="p-3 bg-red-500 rounded-full hover:bg-red-600"><i data-lucide="phone-off" class="w-5 h-5"></i></button>
-                            <button class="p-3 bg-stone-700 rounded-full hover:bg-stone-600"><i data-lucide="video" class="w-5 h-5"></i></button>
+                        <div class="bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
+                            <span class="block text-xl font-bold">Chiro</span>
+                            <span class="text-xs text-slate-500">Certified</span>
                         </div>
                     </div>
                 </div>
@@ -329,193 +252,124 @@
         </div>
     </section>
 
-    <section class="py-24 bg-medical-50">
+    <section id="book" class="py-20 bg-emerald-50 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-center font-serif text-3xl font-bold mb-12">Patient Stories</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm reveal">
-                    <div class="flex text-gold-500 mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-stone-600 mb-6 italic">"Dr. Vasudev's evidence-based approach is top-notch. My knee injury recovery was much faster than anticipated."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center text-stone-500 font-bold">R</div>
-                        <div>
-                            <p class="font-bold text-sm text-stone-900">Ramesh W.</p>
-                            <p class="text-xs text-stone-500">Sports Injury</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="bg-white p-8 rounded-xl shadow-sm reveal delay-100">
-                    <div class="flex text-gold-500 mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-stone-600 mb-6 italic">"The clinic has all modern equipment. I had severe back pain, and the chiropractic adjustments worked wonders."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center text-stone-500 font-bold">P</div>
-                        <div>
-                            <p class="font-bold text-sm text-stone-900">Prakash S.</p>
-                            <p class="text-xs text-stone-500">Chronic Back Pain</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="bg-white p-8 rounded-xl shadow-sm reveal delay-200">
-                    <div class="flex text-gold-500 mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-stone-600 mb-6 italic">"Very friendly staff and hygienic environment. Dr. Vader explains the spinal health aspect very clearly."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center text-stone-500 font-bold">M</div>
-                        <div>
-                            <p class="font-bold text-sm text-stone-900">Manjula U.</p>
-                            <p class="text-xs text-stone-500">Wellness Care</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16">
-                <div class="reveal">
-                    <h2 class="font-serif text-4xl font-bold text-stone-900 mb-2">Visit Kshema Centre</h2>
-                    <p class="text-stone-500 mb-8">Book your appointment today. Walk-ins welcome based on availability.</p>
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
+                
+                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-xl fade-in-up">
+                    <h3 class="font-serif text-3xl font-bold text-slate-900 mb-2">Book Appointment</h3>
+                    <p class="text-slate-500 mb-8">Fill the details below. We will confirm your slot via WhatsApp/Phone.</p>
                     
                     <form class="space-y-6">
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="relative">
-                                <input type="text" id="name" class="peer w-full border-b-2 border-stone-200 py-2 placeholder-transparent focus:border-medical-600 focus:outline-none transition-colors" placeholder="Name">
-                                <label for="name" class="absolute left-0 -top-3.5 text-sm text-stone-500 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-medical-600">Full Name</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="relative group">
+                                <input type="text" required class="peer w-full h-12 px-4 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all placeholder-transparent" id="name" placeholder="Name">
+                                <label for="name" class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-slate-400 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-brand-primary peer-focus:bg-white transition-all">Full Name</label>
                             </div>
-                            <div class="relative">
-                                <input type="tel" id="phone" class="peer w-full border-b-2 border-stone-200 py-2 placeholder-transparent focus:border-medical-600 focus:outline-none transition-colors" placeholder="Phone">
-                                <label for="phone" class="absolute left-0 -top-3.5 text-sm text-stone-500 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-medical-600">Phone Number</label>
+                            <div class="relative group">
+                                <input type="tel" required class="peer w-full h-12 px-4 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all placeholder-transparent" id="phone" placeholder="Phone">
+                                <label for="phone" class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-slate-400 peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-brand-primary peer-focus:bg-white transition-all">Phone Number</label>
                             </div>
                         </div>
-                        
-                        <div class="relative pt-4">
-                            <select class="w-full border-b-2 border-stone-200 py-2 text-stone-600 focus:border-medical-600 focus:outline-none bg-transparent">
-                                <option>Physiotherapy Consultation</option>
+
+                        <div class="relative group">
+                            <select class="peer w-full h-12 px-4 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all text-slate-700">
+                                <option value="" disabled selected>Select Treatment Type</option>
+                                <option>General Physiotherapy</option>
                                 <option>Chiropractic Adjustment</option>
-                                <option>Slimming / Weight Loss</option>
-                                <option>Neuro Rehab</option>
+                                <option>Slimming / Wellness</option>
+                                <option>Post-Surgery Rehab</option>
                             </select>
                         </div>
 
-                        <div class="relative pt-4">
-                            <textarea id="message" rows="3" class="peer w-full border-b-2 border-stone-200 py-2 placeholder-transparent focus:border-medical-600 focus:outline-none transition-colors" placeholder="Message"></textarea>
-                            <label for="message" class="absolute left-0 top-0.5 text-sm text-stone-500 transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-focus:top-0.5 peer-focus:text-sm peer-focus:text-medical-600">Describe your issue (Optional)</label>
+                        <div class="relative group">
+                            <textarea rows="3" class="peer w-full p-4 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all placeholder-transparent" id="msg" placeholder="Message"></textarea>
+                            <label for="msg" class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-slate-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:bg-transparent peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-brand-primary peer-focus:bg-white transition-all">Describe your issue (Optional)</label>
                         </div>
 
-                        <button type="submit" class="w-full bg-stone-900 text-white py-4 rounded-xl font-medium hover:bg-medical-600 transition-colors shadow-lg">
-                            Confirm Booking
+                        <button type="button" class="w-full h-14 bg-slate-900 text-white rounded-xl font-bold text-lg hover:bg-brand-primary transition-colors shadow-lg flex items-center justify-center gap-2">
+                            Confirm Booking <i data-lucide="check-circle" class="w-5 h-5"></i>
                         </button>
                     </form>
                 </div>
 
-                <div class="space-y-8 reveal delay-100">
-                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-100">
+                <div class="flex flex-col justify-center space-y-8 fade-in-up delay-100" id="location">
+                    <div>
+                        <span class="text-brand-primary font-bold tracking-widest uppercase text-sm">Visit Us</span>
+                        <h2 class="font-serif text-4xl font-bold text-slate-900 mt-2 mb-6">Kshema Physiotherapy & Chiropractic Centre</h2>
+                        
                         <div class="space-y-6">
                             <div class="flex items-start gap-4">
-                                <div class="bg-medical-50 p-3 rounded-lg text-medical-600">
+                                <div class="bg-white p-3 rounded-full shadow-md text-brand-primary shrink-0">
                                     <i data-lucide="map-pin" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-stone-900">Hubballi Clinic</h4>
-                                    <p class="text-stone-500 text-sm mt-1">
-                                        1st Floor, Below Torsso Gym,<br>
-                                        Kusugal Rd, Beside SBI Zonal Office,<br>
-                                        Keshwapur, Hubballi, Karnataka 580020
-                                    </p>
+                                    <p class="font-bold text-slate-900">Address</p>
+                                    <p class="text-slate-600">1st Floor, Below Torsso Gym, Kusugal Rd,<br>Beside SBI Zonal Office, Keshwapur,<br>Hubballi, Karnataka 580020</p>
                                 </div>
                             </div>
                             
                             <div class="flex items-start gap-4">
-                                <div class="bg-medical-50 p-3 rounded-lg text-medical-600">
+                                <div class="bg-white p-3 rounded-full shadow-md text-brand-primary shrink-0">
                                     <i data-lucide="clock" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-stone-900">Opening Hours</h4>
-                                    <p class="text-stone-500 text-sm mt-1">Mon - Sat: 10:00 AM - 09:00 PM</p>
-                                    <p class="text-stone-500 text-sm">Sun: By Appointment</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4">
-                                <div class="bg-medical-50 p-3 rounded-lg text-medical-600">
-                                    <i data-lucide="phone" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-stone-900">Contact</h4>
-                                    <p class="text-stone-500 text-sm mt-1">+91 98XXX XXXXX</p>
-                                    <p class="text-stone-500 text-sm">dr.vasudev.kshema@gmail.com</p>
+                                    <p class="font-bold text-slate-900">Working Hours</p>
+                                    <p class="text-slate-600">Mon - Sat: 10:00 AM - 09:00 PM<br>Sunday: By Appointment Only</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="w-full h-64 bg-stone-200 rounded-2xl flex items-center justify-center text-stone-400">
-                        <span class="flex items-center gap-2"><i data-lucide="map" class="w-5 h-5"></i> Interactive Map Loaded Here</span>
+
+                    <div class="w-full h-48 bg-slate-200 rounded-2xl overflow-hidden relative group cursor-pointer shadow-inner">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white px-6 py-2 rounded-full shadow-lg font-bold text-sm text-slate-800 group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                View on Google Maps
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-                <span class="text-white font-serif text-xl font-bold">Kshema.</span>
-                <p class="text-sm mt-2">© 2025 Kshema Physiotherapy Centre. All rights reserved.</p>
+            <div class="text-center md:text-left">
+                <p class="font-serif text-2xl font-bold text-white mb-1">KSHEMA.</p>
+                <p class="text-sm text-slate-500">Restoring Motion, Reclaiming Life.</p>
             </div>
             <div class="flex gap-6">
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-brand-primary transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-brand-primary transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-brand-primary transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
             </div>
+            <p class="text-sm text-slate-600">© 2025 Kshema Physiotherapy.</p>
         </div>
     </footer>
-
-    <div class="fixed bottom-6 right-6 z-50">
-        <button id="chat-toggle" class="bg-medical-600 hover:bg-medical-700 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-105 flex items-center gap-2">
-            <i data-lucide="message-circle" class="w-6 h-6"></i>
-            <span class="hidden md:inline font-medium">Chat with AI Assistant</span>
-        </button>
-        
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 bg-white rounded-2xl shadow-2xl border border-stone-100 overflow-hidden transform origin-bottom-right transition-all">
-            <div class="bg-medical-600 p-4 text-white flex justify-between items-center">
-                <div>
-                    <h4 class="font-bold">Kshema Assistant</h4>
-                    <p class="text-xs text-medical-100 flex items-center gap-1"><span class="w-2 h-2 bg-green-400 rounded-full"></span> Online</p>
-                </div>
-                <button id="chat-close" class="hover:bg-medical-700 p-1 rounded"><i data-lucide="x" class="w-4 h-4"></i></button>
-            </div>
-            <div class="h-64 p-4 overflow-y-auto bg-stone-50 space-y-3 text-sm">
-                <div class="bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[85%] border border-stone-100">
-                    Hello! I'm Kshema's AI assistant. How can I help you today?
-                </div>
-                <div class="flex gap-2 flex-wrap">
-                    <button class="bg-medical-50 text-medical-700 px-3 py-1 rounded-full text-xs hover:bg-medical-100 border border-medical-200">Book Appointment</button>
-                    <button class="bg-medical-50 text-medical-700 px-3 py-1 rounded-full text-xs hover:bg-medical-100 border border-medical-200">Consultation Fees</button>
-                    <button class="bg-medical-50 text-medical-700 px-3 py-1 rounded-full text-xs hover:bg-medical-100 border border-medical-200">Clinic Address</button>
-                </div>
-            </div>
-            <div class="p-3 border-t border-stone-100 bg-white">
-                <div class="flex gap-2">
-                    <input type="text" placeholder="Type a message..." class="w-full text-sm outline-none text-stone-600">
-                    <button class="text-medical-600"><i data-lucide="send" class="w-5 h-5"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Initialize Icons
         lucide.createIcons();
 
-        // Intersection Observer for Animations
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // Scroll Animations (IntersectionObserver)
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
@@ -524,44 +378,20 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-sm');
-                nav.classList.replace('h-20', 'h-16');
-            } else {
-                nav.classList.remove('shadow-sm');
-                nav.classList.replace('h-16', 'h-20');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-transparent', 'glass'); 
             }
-        });
-
-        // Chat Toggle Logic
-        const chatToggle = document.getElementById('chat-toggle');
-        const chatWindow = document.getElementById('chat-window');
-        const chatClose = document.getElementById('chat-close');
-
-        chatToggle.addEventListener('click', () => {
-            chatWindow.classList.toggle('hidden');
-        });
-
-        chatClose.addEventListener('click', () => {
-            chatWindow.classList.add('hidden');
-        });
-
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
         });
     </script>
 </body>
